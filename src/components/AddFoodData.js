@@ -132,7 +132,7 @@ const AddFoodData = () => {
                             />
                         </div>
                         <div className="form-col">
-                            <label>Food Type</label>
+                            <label>Restaurant Type</label>
 
                             <select name="food_type" onChange={(e) => { setFoodType(e.target.value) }}>
                                 <option value="null">Select Food Type</option>

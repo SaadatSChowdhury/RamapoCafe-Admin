@@ -40,13 +40,19 @@ const OrderSection = () => {
     const [keyword, setKeyword] = useState('');
 
     const getAllOrder = async () => {
-        setAllOrders([]);
+    try {
         const querySnapshot = await getDocs(collection(db, "UserOrders"));
+        const orders = [];
         querySnapshot.forEach((doc) => {
             console.log(doc.id, " => ", doc.data());
-            setAllOrders((prev) => [...prev, doc.data()]);
+            orders.push(doc.data());
         });
+        setAllOrders(orders);
+    } catch (error) {
+        console.error("Error fetching orders: ", error);
+    }
     };
+
 
     useEffect(() => {
         getAllOrder();
